@@ -3,6 +3,8 @@ import ae
 import numpy as np
 from matplotlib import pyplot as plt
 
+from flask import Flask, render_template, url_for, request, jsonify
+
 real_dim = 100
 N = int(real_dim /2)
 vae = VAE(real_dim=real_dim)
@@ -39,3 +41,35 @@ vae.train(x_train, N_iterations=20001)
 
 # axis.set_title("Reconstruction")
 # plt.show()
+
+
+
+app = Flask(__name__)
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    
+    return render_template('index.html')
+
+@app.route("/calculate", methods = ['GET', 'POST'])
+def calculate():
+    
+    x = float(request.json['valor'])
+    y = float(request.json['valor_2'])
+    # print(request.json)
+    inputs = np.array([x,y])[None]
+
+    prediction = vae.decoder(inputs)
+    xx = prediction[0,0:50].numpy()
+    xxx = xx.astype(float)
+    yy = prediction[0,50:].numpy()
+    yyy = yy.astype(float)
+   
+    print(xxx.dtype)
+    result = {"x_coordinate":list(xxx), "y_coordinate": list(yyy), "x": x, "y": y}
+    return jsonify(result)
+
+
+if __name__ == "__main__":
+    app.run(debug=False)

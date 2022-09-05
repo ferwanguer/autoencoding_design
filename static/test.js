@@ -6,10 +6,10 @@ const ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, {
   type: 'scatter',
   data: {
-      labels: [],
+      labels: [0,1],
       datasets: [{
           label: '# of Votes',
-          data: [],
+          data: [0,1],
           // backgroundColor: [
           //     'rgba(255, 99, 132, 0.2)',
           //     'rgba(54, 162, 235, 0.2)',
