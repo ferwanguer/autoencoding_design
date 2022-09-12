@@ -6,7 +6,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, {
   type: 'scatter',
   data: {
-      labels: [0,1],
+      labels: [-1,13],
       datasets: [{
           label: '# of Votes',
           data: [0,1],
@@ -34,8 +34,8 @@ let myChart = new Chart(ctx, {
         
           y: {
               beginAtZero: true,
-              min:-4,
-              max:4
+              min:-1.5,
+              max: 1.5
           }
          
       }, responsive: false
@@ -88,8 +88,8 @@ $.ajax({
           
             y: {
                 beginAtZero: true,
-                max: 4,
-                min: -4
+                max: 1.5,
+                min: -1.5
             }
            
         }, responsive: false, animation:false
