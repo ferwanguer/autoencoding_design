@@ -8,11 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
-  <!-- <script src = "https://code.jquery.com/jquery-3.6.1.min.js"></script> -->
-  <!-- <script src = "main"></script> -->
-  
 
+  <style>
+    .box{
+      display: inline-block;
+    }
+  </style>
   </head>
   <body>
     <div id="Autoencoding Representation">
@@ -33,8 +34,12 @@
         <h1 id = "p2"></h1>
         
       
-     
+        <div class = "box 1">
         <canvas id="myChart" width="500px" height="500px" style="border:1px solid"></canvas>
+        </div>
+        <div class = "box 2">
+        <canvas id="myChart_polar" width="500px" height="500px" style="border:1px solid"></canvas>
+        </div>
 
 
      <script src = "{{ url_for('static', filename='test.js') }}"></script>

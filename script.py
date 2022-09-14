@@ -1,11 +1,11 @@
-from ae import VAE
+from ae import VAE, ForwardMapper
 import ae
 import numpy as np
 from matplotlib import pyplot as plt
 from Data_preprocess import FoilData
 from Polar_preprocess import PolarData
 from flask import Flask, render_template, url_for, request, jsonify
-
+import tensorflow as tf
 
 
 Data = FoilData('Airfoils')
@@ -37,14 +37,23 @@ vae_polar = VAE(real_dim = real_dim)
 
 vae.train(x_train, N_iterations=51)
 vae_polar.train(x_train_polar, N_iterations=51)
-
-for i in range(1):
+n_samples = 50
+for i in range(n_samples):
     _,_,z = vae.encoder(x_train)
-    print(z)
+    _,_,z_polar = vae_polar.encoder(x_train_polar)
+
+    if i == 0:
+        Z = z
+        Z_polar = z_polar
+    else:
+        Z = tf.concat([Z, z], axis = 0)
+        Z_polar = tf.concat([Z_polar, z_polar], axis=0)
+
+
+mapper = ForwardMapper()
+mapper.train(training_data=Z.numpy(), labels=Z_polar.numpy())
 
 app = Flask(__name__)
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     
@@ -68,7 +77,23 @@ def calculate():
     yyy = yy.astype(float)
     yyy = np.append(yyy,np.array([0,0]))
 
-    result = {"x_coordinate":list(xxx), "y_coordinate": list(yyy), "x": x, "y": y}
+    #Polar part:
+    mapped_inputs = mapper.model(inputs)
+    polar_prediction = vae_polar.decoder(mapped_inputs)
+
+    xx_polar = polar_prediction[0,0:N].numpy()
+    xxx_polar = xx_polar.astype(float)
+    # xxx_polar = np.append(xxx,np.array([-1,13]))
+    # print(xxx[-1])
+    yy_polar = polar_prediction[0,N:].numpy()
+
+    yyy_polar = yy_polar.astype(float)
+    # yyy_polar = np.append(yyy_polar,np.array([0,0]))
+
+
+
+
+    result = {"x_coordinate":list(xxx), "y_coordinate": list(yyy), "x": x, "y": y, "x_polar": list(xxx_polar), "y_polar": list(yyy_polar)}
     return jsonify(result)
 
 
