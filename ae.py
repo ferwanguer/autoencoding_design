@@ -58,7 +58,7 @@ class VAE(keras.Model):
         kl_loss = -0.5 * (1 + z_log_var - tf.square(z_mean) - tf.exp(z_log_var))
         # print(kl_loss)
         kl_loss = tf.reduce_mean(tf.reduce_sum(kl_loss, axis=1))
-        beta = 0.001
+        beta = 0.005
         total_loss = reconstruction_loss + beta * kl_loss
 
         return total_loss
@@ -84,3 +84,58 @@ class VAE(keras.Model):
                 print(f'The loss value for {i} iterations is {loss_value.numpy()}')
                 # sys.stdout.write('\r%s %s%s %s' % ("N_it = ", i, '     Loss = ', loss_value.numpy()))
                 # sys.stdout.flush()
+
+
+class ForwardMapper:
+
+    def __init__(self, latent_dim=2):
+        self.layers = [latent_dim, 5, 5, 5, latent_dim]
+        tf.keras.backend.set_floatx('float64')
+        self.model = tf.keras.Sequential()
+        self.model.optimizer = tf.keras.optimizers.Adam()
+        self.model.add(tf.keras.layers.InputLayer(input_shape=(self.layers[0],)))
+
+        for width in self.layers[1:-1]:
+            self.model.add(tf.keras.layers.Dense(width, activation=tf.nn.tanh, kernel_initializer="glorot_normal"))
+
+        self.model.add(tf.keras.layers.Dense(
+            self.layers[-1], activation=None, kernel_initializer="glorot_normal"))
+
+    def loss(self, latent_design, latent_polar):
+        prediction = self.model(latent_design)
+        # print(reconstruction)
+        mse = tf.keras.losses.MeanSquaredError()
+        reconstruction_loss = mse(latent_polar, prediction)
+        total_loss = reconstruction_loss
+
+        return total_loss
+
+    def grad(self, latent_design, latent_polar):
+        with tf.GradientTape() as tape:
+            loss_value = self.loss(latent_design, latent_polar)
+            grads = tape.gradient(loss_value, self.model.trainable_weights)
+        return loss_value, grads
+
+    def optimization_step(self, latent_design, latent_polar):
+        loss_value, grads = self.grad(latent_design, latent_polar)
+
+        self.model.optimizer.apply_gradients(zip(grads, self.model.trainable_weights))
+        return loss_value
+
+    def train(self, training_data, labels, N_iterations=1000, batch_size=8):
+        for i in range(N_iterations):
+            idx = np.random.choice(training_data.shape[0], batch_size, replace=False)
+            train_batch = training_data[idx, :]
+            label_batch = labels[idx,:]
+            loss_value = self.optimization_step(train_batch, label_batch)
+            if i % 100 == 0:
+                print(f'The loss value for {i} iterations (MAPPER) is {loss_value.numpy()}')
+                # sys.stdout.write('\r%s %s%s %s' % ("N_it = ", i, '     Loss = ', loss_value.numpy()))
+                # sys.stdout.flush()
+
+test = ForwardMapper()
+training = np.zeros((10,2))
+labels = np.ones((10,2))
+test.train(training,labels)
+a = test.model(np.zeros((1,2)))
+print(a)

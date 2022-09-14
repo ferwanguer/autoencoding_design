@@ -69,20 +69,26 @@ class FoilData:
             # self.y_coordinates[i][-1] = self.y_coordinates[i][0]
 
     def training_data_generation(self):
-        x_training_set = 10 * np.array(self.x_coordinates)
-        y_training_set = 10 * np.array(self.y_coordinates)
+        arrayed_x = np.array(self.x_coordinates)
+        arrayed_y = np.array(self.y_coordinates)
+
+        x_training_set = 10 * arrayed_x #This multiplication is to facilitate training and representation.
+        y_training_set = 10 * arrayed_y
+
         return np.hstack((x_training_set, y_training_set))
 
+if __name__ == "__main__":
 
-Data = FoilData('Airfoils')
-Data.point_uniformation()
+    Data = FoilData('Airfoils')
+    Data.point_uniformation()
+    a = Data.training_data_generation()
 
 #
-# from matplotlib import pyplot as plt
-#
+    from matplotlib import pyplot as plt
+
 # # for i in range(len(Data.x_coordinates)):
 #     # print(i)
-# plt.plot(Data.x_coordinates[7][32:40], Data.y_coordinates[7][32:40])
+#     plt.plot(a[4,:], b[4,:])
 #     # plt.scatter(x_new,y_new)
-# plt.show()
-# print(f'{Data.x_coordinates[5]} \n {Data.y_coordinates[5]}')
+#     plt.show()
+#     # print(f'{Data.x_coordinates[5]} \n {Data.y_coordinates[5]}')

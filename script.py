@@ -3,16 +3,24 @@ import ae
 import numpy as np
 from matplotlib import pyplot as plt
 from Data_preprocess import FoilData
+from Polar_preprocess import PolarData
 from flask import Flask, render_template, url_for, request, jsonify
 
 
 
 Data = FoilData('Airfoils')
+
 Data.point_uniformation()
 x_train = Data.training_data_generation()
 real_dim = x_train.shape[-1]
 N = int(real_dim /2)
 vae = VAE(real_dim=real_dim)
+
+Polar_Data = PolarData('Polars')
+Polar_Data.point_uniformation()
+x_train_polar = Polar_Data.training_data_generation()
+vae_polar = VAE(real_dim = real_dim)
+
 # repetitions = 499
 # frequency = np.linspace(1, 2, repetitions)[:, None]
 # amplitude = np.linspace(1, 3, repetitions)[:, None]
@@ -27,10 +35,12 @@ vae = VAE(real_dim=real_dim)
 # x_test = x_data[idx[int(repetitions/2 +1):],:]
 
 
-vae.train(x_train, N_iterations=30001)
+vae.train(x_train, N_iterations=51)
+vae_polar.train(x_train_polar, N_iterations=51)
 
-
-
+for i in range(1):
+    _,_,z = vae.encoder(x_train)
+    print(z)
 
 app = Flask(__name__)
 
