@@ -19,7 +19,7 @@ vae = VAE(real_dim=real_dim)
 Polar_Data = PolarData('Polars')
 Polar_Data.point_uniformation()
 x_train_polar = Polar_Data.training_data_generation()
-vae_polar = VAE(real_dim = real_dim)
+vae_polar = VAE(real_dim = real_dim, beta = 0.01)
 
 # repetitions = 499
 # frequency = np.linspace(1, 2, repetitions)[:, None]
@@ -35,8 +35,8 @@ vae_polar = VAE(real_dim = real_dim)
 # x_test = x_data[idx[int(repetitions/2 +1):],:]
 
 
-vae.train(x_train, N_iterations=51)
-vae_polar.train(x_train_polar, N_iterations=51)
+vae.train(x_train, N_iterations=30001)
+vae_polar.train(x_train_polar, N_iterations=30001)
 n_samples = 50
 for i in range(n_samples):
     _,_,z = vae.encoder(x_train)
@@ -51,7 +51,7 @@ for i in range(n_samples):
 
 
 mapper = ForwardMapper()
-mapper.train(training_data=Z.numpy(), labels=Z_polar.numpy())
+mapper.train(training_data=Z.numpy(), labels=Z_polar.numpy(), N_iterations=10_000)
 
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
@@ -83,13 +83,14 @@ def calculate():
 
     xx_polar = polar_prediction[0,0:N].numpy()
     xxx_polar = xx_polar.astype(float)
-    # xxx_polar = np.append(xxx,np.array([-1,13]))
+    xxx_polar = np.append(xxx_polar,np.array([-16,16]))
     # print(xxx[-1])
     yy_polar = polar_prediction[0,N:].numpy()
 
     yyy_polar = yy_polar.astype(float)
-    # yyy_polar = np.append(yyy_polar,np.array([0,0]))
+    yyy_polar = np.append(yyy_polar,np.array([0,0]))
 
+    print(mapped_inputs)
 
 
 

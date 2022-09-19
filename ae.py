@@ -17,7 +17,7 @@ class Sampling(layers.Layer):
 
 
 class VAE(keras.Model):
-    def __init__(self, real_dim=50, latent_dim=2):
+    def __init__(self, real_dim=50, latent_dim=2, beta = 0.005):
         super(VAE, self).__init__()
         self.real_dim = real_dim
         self.latent_dim = latent_dim
@@ -29,7 +29,7 @@ class VAE(keras.Model):
         self.optimizer = tf.keras.optimizers.Adam()
         self.encoder_constructor()
         self.decoder_constructor()
-
+        self.beta = beta
     def encoder_constructor(self):
 
         encoder_inputs = keras.Input(shape=(self.real_dim))
@@ -58,8 +58,8 @@ class VAE(keras.Model):
         kl_loss = -0.5 * (1 + z_log_var - tf.square(z_mean) - tf.exp(z_log_var))
         # print(kl_loss)
         kl_loss = tf.reduce_mean(tf.reduce_sum(kl_loss, axis=1))
-        beta = 0.005
-        total_loss = reconstruction_loss + beta * kl_loss
+
+        total_loss = reconstruction_loss + self.beta* kl_loss
 
         return total_loss
 
@@ -89,7 +89,7 @@ class VAE(keras.Model):
 class ForwardMapper:
 
     def __init__(self, latent_dim=2):
-        self.layers = [latent_dim, 5, 5, 5, latent_dim]
+        self.layers = [latent_dim, 5, 5, latent_dim]
         tf.keras.backend.set_floatx('float64')
         self.model = tf.keras.Sequential()
         self.model.optimizer = tf.keras.optimizers.Adam()
@@ -122,7 +122,7 @@ class ForwardMapper:
         self.model.optimizer.apply_gradients(zip(grads, self.model.trainable_weights))
         return loss_value
 
-    def train(self, training_data, labels, N_iterations=1000, batch_size=8):
+    def train(self, training_data, labels, N_iterations=3000, batch_size=8):
         for i in range(N_iterations):
             idx = np.random.choice(training_data.shape[0], batch_size, replace=False)
             train_batch = training_data[idx, :]
