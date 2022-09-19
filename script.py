@@ -21,18 +21,7 @@ Polar_Data.point_uniformation()
 x_train_polar = Polar_Data.training_data_generation()
 vae_polar = VAE(real_dim = real_dim, beta = 0.01)
 
-# repetitions = 499
-# frequency = np.linspace(1, 2, repetitions)[:, None]
-# amplitude = np.linspace(1, 3, repetitions)[:, None]
-#
-# x = np.linspace(0,1,N)[None]
-# x = np.repeat(x,repetitions, axis = 0)
-# y = amplitude * np.sin(frequency * 2 * np.pi * x)
-#
-# x_data = np.hstack((x,y))
-# idx = np.random.choice(x_data.shape[0], repetitions, replace=False)
-# x_train = x_data[idx[:int(repetitions/2 -1)],:]
-# x_test = x_data[idx[int(repetitions/2 +1):],:]
+
 
 
 vae.train(x_train, N_iterations=30001)
