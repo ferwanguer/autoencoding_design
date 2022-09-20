@@ -9,7 +9,7 @@ let myChart = new Chart(ctx, {
   data: {
       labels: [-1,13],
       datasets: [{
-          label: '# of Votes',
+          
           data: [0,1],
           // backgroundColor: [
           //     'rgba(255, 99, 132, 0.2)',
@@ -27,12 +27,21 @@ let myChart = new Chart(ctx, {
       }]
   },
   options: {
+    plugins: {
+        title: {
+            display: true,
+            text: 'Airfoil Design'
+        },
+        legend: {
+            display: false //This will do the task
+         },
+    },
       scales: {
         
           y: {
               beginAtZero: true,
-              min:-1.5,
-              max: 1.5
+              min:-6,
+              max: 6
           }
          
       }, responsive: false
@@ -44,7 +53,7 @@ let myChart_p = new Chart(ctx_polar, {
     data: {
         labels: [-1,13],
         datasets: [{
-            label: '# of Votes',
+            
             data: [0,1],
             // backgroundColor: [
             //     'rgba(255, 99, 132, 0.2)',
@@ -62,12 +71,21 @@ let myChart_p = new Chart(ctx_polar, {
         }]
     },
     options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Polar (Cl vs angle of attack º)'
+            },
+            legend: {
+                display: false //This will do the task
+             },
+        },
         scales: {
           
             y: {
                 beginAtZero: true,
-                min:-1.5,
-                max: 1.5
+                min:-2,
+                max: 2
             }
            
         }, responsive: false
@@ -94,7 +112,7 @@ $.ajax({
     data: {
         labels: result["x_coordinate"],
         datasets: [{
-            label: '# of Votes',
+           
             data: result["y_coordinate"],
             // backgroundColor: [
             //     'rgba(255, 99, 132, 0.2)',
@@ -112,13 +130,23 @@ $.ajax({
         }]
     },
     options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Airfoil Design'
+            },
+            legend: {
+                display: false //This will do the task
+             },
+        },
+
         
         scales: {
           
             y: {
                 beginAtZero: true,
-                max: 1.5,
-                min: -1.5
+                max: 6,
+                min: -6
             }
            
         }, responsive: false, animation:false
@@ -135,7 +163,7 @@ $.ajax({
         data: {
             labels: result["x_polar"],
             datasets: [{
-                label: '# of Votes',
+                
                 data: result["y_polar"],
                 // backgroundColor: [
                 //     'rgba(255, 99, 132, 0.2)',
@@ -146,19 +174,30 @@ $.ajax({
                 //     'rgba(255, 159, 64, 0.2)'
                 // ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 0.2)',
                     
                 ],
                 borderWidth: 1
             }]
         },
         options: {
+
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Polar (Cl vs angle of attack º)'
+                },
+                legend: {
+                    display: false //This will do the task
+                 },
+            },
+
             scales: {
               
                 y: {
                     beginAtZero: true,
-                    min:-1.5,
-                    max: 1.5
+                    min:-2,
+                    max: 2
                 }
                
             }, responsive: false, animation:false

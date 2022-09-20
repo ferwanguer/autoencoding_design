@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Autoencoder</title>
+  <title>AI design</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- <link rel="javascript" href="{{ url_for('static', filename='test.js') }}"> -->
@@ -13,12 +13,105 @@
     .box{
       display: inline-block;
     }
+
   </style>
+  <style>/* Stylesheet 1: */
+    body {
+        font: 100% Lucida Sans, Verdana;
+        margin: 20px;
+        line-height: 26px;
+    }
+    
+    .container {
+        xmin-width: 900px;
+    }
+    
+    .wrapper {
+        position: relative;
+        overflow: auto;
+    }
+    
+    #top, #sidebar, #bottom, .menuitem {
+        border-radius: 4px;
+        margin: 4px;
+    }
+    
+
+    
+    #main {
+        padding: 10px;
+        margin: 0 210px;
+    }
+
+    
+    #bottom {
+        border: 1px solid #d4d4d4;
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 10px;
+        font-size: 70%;
+        line-height: 14px;
+    }
+    
+    #top h1, #top p, #menulist {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .menuitem {
+        background-color: #f1f1f1;
+        border: 1px solid #d4d4d4;
+        list-style-type: none;
+        padding: 2px;
+        cursor: pointer;
+    }
+    
+    .menuitem:hover {
+        background-color: #ffffff;
+    }
+    
+    .menuitem:first-child {
+       background-color:#04AA6D;
+       color: white;
+       font-weight:bold;
+    }
+    
+    a {
+        color: #000000;
+        text-decoration: underline;
+    }
+    
+    a:hover {
+        text-decoration: none;
+    }
+    
+    
+    @media (max-width: 800px) {
+        #sidebar {
+            width: auto;
+            position: relative;
+        } 
+        #main {
+            margin-right: 0;
+        }    
+           
+    }
+    
+    @media (max-width: 600px) {
+        #menubar {
+            width: auto;
+            float: none;
+        }
+        #main {
+            margin: 0;
+        }    
+    }
+    </style>
   </head>
   <body>
     <div id="Autoencoding Representation">
-      <h1>Representation</h1>
-      <p>Please enter the coordinates for the latent parameters:</p>
+      <h1>Polar and Airfoil design representation</h1>
+      <p>Introduce values of trained latent parameters</p>
 
    
         
@@ -27,7 +120,7 @@
         <input id = "r_1" type="range" min="-2" max="2" step="0.01" name = "xbar" onchange="sendinfo(this.value, r_2.value)" oninput="sendinfo(this.value,r_2.value)">
         <label>Latent Variable #2</label>
         <input id = "r_2" type="range" min="-2" max="2" step="0.01" name = "ybar" onchange="sendinfo(r_1.value, this.value)" oninput="sendinfo(r_1.value, this.value)">
-        <br>
+        
         <p> Value of First latent variable</p> 
         <h1 id = "pp"></h1>
         <p> Value of Second latent variable</p> 
@@ -35,10 +128,10 @@
         
       
         <div class = "box 1">
-        <canvas id="myChart" width="500px" height="500px" style="border:1px solid"></canvas>
+        <canvas id="myChart" width="500px" height="500px" ></canvas>
         </div>
         <div class = "box 2">
-        <canvas id="myChart_polar" width="500px" height="500px" style="border:1px solid"></canvas>
+        <canvas id="myChart_polar" width="500px" height="500px" ></canvas>
         </div>
 
 

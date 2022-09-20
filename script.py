@@ -1,3 +1,4 @@
+from fileinput import filename
 from ae import VAE, ForwardMapper
 import ae
 import numpy as np
@@ -6,6 +7,7 @@ from Data_preprocess import FoilData
 from Polar_preprocess import PolarData
 from flask import Flask, render_template, url_for, request, jsonify
 import tensorflow as tf
+import os
 
 
 Data = FoilData('Airfoils')
@@ -14,18 +16,24 @@ Data.point_uniformation()
 x_train = Data.training_data_generation()
 real_dim = x_train.shape[-1]
 N = int(real_dim /2)
-vae = VAE(real_dim=real_dim)
+vae = VAE(real_dim=real_dim, beta = 0.1)
 
 Polar_Data = PolarData('Polars')
 Polar_Data.point_uniformation()
 x_train_polar = Polar_Data.training_data_generation()
-vae_polar = VAE(real_dim = real_dim, beta = 0.01)
-
-
-
+vae_polar = VAE(real_dim = real_dim, beta = 0.1)
 
 vae.train(x_train, N_iterations=30001)
 vae_polar.train(x_train_polar, N_iterations=30001)
+
+mu, sigma , _ = vae.encoder(x_train)
+
+results_path = 'Results'
+filename = "mus_sigmas"
+np.savez(os.path.join(results_path, filename), mu, sigma,
+                    mu = mu,
+                    sigma = sigma)
+
 n_samples = 50
 for i in range(n_samples):
     _,_,z = vae.encoder(x_train)
@@ -40,7 +48,7 @@ for i in range(n_samples):
 
 
 mapper = ForwardMapper()
-mapper.train(training_data=Z.numpy(), labels=Z_polar.numpy(), N_iterations=10_000)
+mapper.train(training_data=Z.numpy(), labels=Z_polar.numpy(), N_iterations=20000)
 
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
@@ -79,7 +87,7 @@ def calculate():
     yyy_polar = yy_polar.astype(float)
     yyy_polar = np.append(yyy_polar,np.array([0,0]))
 
-    print(mapped_inputs)
+    
 
 
 

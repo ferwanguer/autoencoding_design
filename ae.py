@@ -17,7 +17,7 @@ class Sampling(layers.Layer):
 
 
 class VAE(keras.Model):
-    def __init__(self, real_dim=50, latent_dim=2, beta = 0.005):
+    def __init__(self, real_dim=50, latent_dim=2, beta = 0.002):
         super(VAE, self).__init__()
         self.real_dim = real_dim
         self.latent_dim = latent_dim
@@ -122,7 +122,7 @@ class ForwardMapper:
         self.model.optimizer.apply_gradients(zip(grads, self.model.trainable_weights))
         return loss_value
 
-    def train(self, training_data, labels, N_iterations=3000, batch_size=8):
+    def train(self, training_data, labels, N_iterations=3000, batch_size=50):
         for i in range(N_iterations):
             idx = np.random.choice(training_data.shape[0], batch_size, replace=False)
             train_batch = training_data[idx, :]
