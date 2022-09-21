@@ -11,7 +11,8 @@ For this purpose, 3 Neural networks are constructed in the code. 2 Variational a
 
 The results obtained after training are showed below:
 
-https://user-images.githubusercontent.com/57362874/191561756-02a4d711-823b-4eca-8bfa-21d83783ed6c.mp4
+![image](https://user-images.githubusercontent.com/57362874/191562208-a0f1c579-a533-4480-8152-808da0aa27a5.png)
+
 
 
 Main concepts of VAEs clearly explained: https://www.youtube.com/watch?v=9zKuYvjFFS8&t=604s&ab_channel=ArxivInsights
