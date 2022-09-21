@@ -3,6 +3,8 @@
 
 The study case for the application of this technique has been the design extrapolation of 11 NACA Airfoils. This data has been extracted from: http://airfoiltools.com/airfoil/naca4digit . This data was imported as .txt files in the ***Airfoils*** folder.
 
+![Capture](https://user-images.githubusercontent.com/57362874/191486351-6c859f63-e314-4c5d-bb66-4e830c0f8f2c.PNG)
+
 
 
 
