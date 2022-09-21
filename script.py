@@ -29,7 +29,7 @@ vae_polar.train(x_train_polar, N_iterations=30001)
 mu, sigma , _ = vae.encoder(x_train)
 
 results_path = 'Results'
-filename = "mus_sigmas_02_second"
+filename = "mus_sigmas_02_third"
 np.savez(os.path.join(results_path, filename), mu, sigma,
                     mu = mu,
                     sigma = sigma)

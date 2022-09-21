@@ -4,7 +4,7 @@ from scipy.stats import multivariate_normal
 import os
 
 results_path = 'Results'
-results = np.load(os.path.join(results_path,'mus_sigmas_02_second.npz'))
+results = np.load(os.path.join(results_path,'mus_sigmas_02_third.npz'))
 mus = results['mu']
 sigmas = results['sigma']
 
