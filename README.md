@@ -7,7 +7,7 @@ The functioning of this example is as follows: The design of each Airfoil and it
 
 For this purpose, 3 Neural networks are constructed in the code. 2 Variational autoencoders (One for the Airfoil designs and another for their polars) and one feed forward neural network that maps the latent spaces between the two. The figure below shows the probabilistic distributions of each Airfoil in the latent space. This 2D space is mapped into the corresponding polar 2D space via the mapper (the distributions of the Airfoil polars will not be located on the same points). 
 
-![Capture](https://user-images.githubusercontent.com/57362874/191486351-6c859f63-e314-4c5d-bb66-4e830c0f8f2c.PNG | width = 100)
+![Capture](https://user-images.githubusercontent.com/57362874/191486351-6c859f63-e314-4c5d-bb66-4e830c0f8f2c.PNG)
 
 The results obtained with the application of the architecture briefly described above:
 
