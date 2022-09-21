@@ -14,4 +14,5 @@ With this data, 3 Neural networks are constructed in the code. 2 Variational aut
 
 
 For information about the VAE implementation: https://keras.io/examples/generative/vae/
+
 For information about Polars, Airfoils and basic aerodynamic concepts: https://en.wikipedia.org/wiki/Drag_curve, http://airfoiltools.com/polar/index
