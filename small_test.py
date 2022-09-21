@@ -21,5 +21,5 @@ for i in range(11):
     ax2.contour(x, y, rv.pdf(pos), 100, cmap=cmap_list[i], alpha = 0.5)
 
 
-
+ax2.set_title("Airfoil distribution in the latent space")
 plt.show()
