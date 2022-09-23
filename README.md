@@ -16,7 +16,7 @@ For this purpose, 3 Neural networks are constructed in the code. 2 Variational a
 
 The results obtained after training:
 
-https://user-images.githubusercontent.com/57362874/191912806-e3a2cf30-6684-42a1-bbb0-6aff70338ecf.mp4
+(https://github.com/ferwanguer/autoencoding_design/blob/master/Design_evolution.mp4)
 
 
 
