@@ -1,7 +1,8 @@
 # Variational autoencoder applied to Generative design
 > This repo contains my work on variational autoencoders applied to generative design. For a thorough documentation on the mathematical principles of the work, it would be adequate to read : https://arxiv.org/abs/2205.02102
 
-https://user-images.githubusercontent.com/57362874/191912806-e3a2cf30-6684-42a1-bbb0-6aff70338ecf.mp4
+![Design_evol_AdobeExpress](https://user-images.githubusercontent.com/57362874/191919403-a8eb1994-0ee3-49e7-9845-553f9ba82755.gif)
+
 
 
 The study case for the application of this technique has been the design extrapolation of 11 NACA Airfoils. This data has been extracted from: http://airfoiltools.com/airfoil/naca4digit. Imported as .txt files in the ***Airfoils*** folder. The same operation was performed by the polars of each of these Airfoils, folder ***Polars***. 
@@ -12,9 +13,9 @@ For this purpose, 3 Neural networks are constructed in the code. 2 Variational a
 
 ![Capture](https://user-images.githubusercontent.com/57362874/191486351-6c859f63-e314-4c5d-bb66-4e830c0f8f2c.PNG)
 
-The results obtained after training are showed below:
+The results obtained after training:
 
-![ezgif-5-752830035a](https://user-images.githubusercontent.com/57362874/191562495-ba58ae3b-b780-4d21-8942-2ec2837733e4.gif)
+https://user-images.githubusercontent.com/57362874/191912806-e3a2cf30-6684-42a1-bbb0-6aff70338ecf.mp4
 
 
 
