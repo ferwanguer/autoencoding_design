@@ -16,15 +16,15 @@ Data.point_uniformation()
 x_train = Data.training_data_generation()
 real_dim = x_train.shape[-1]
 N = int(real_dim /2)
-vae = VAE(real_dim=real_dim, beta = 0.02)
+vae = VAE(real_dim=real_dim, beta = 0.018)
 
 Polar_Data = PolarData('Polars')
 Polar_Data.point_uniformation()
 x_train_polar = Polar_Data.training_data_generation()
-vae_polar = VAE(real_dim = real_dim, beta = 0.02)
+vae_polar = VAE(real_dim = real_dim, beta = 0.018)
 
-vae.train(x_train, N_iterations=30001)
-vae_polar.train(x_train_polar, N_iterations=30001)
+vae.train(x_train, N_iterations=20001)
+vae_polar.train(x_train_polar, N_iterations=20001)
 
 mu, sigma , _ = vae.encoder(x_train)
 
@@ -48,7 +48,7 @@ for i in range(n_samples):
 
 
 mapper = ForwardMapper()
-mapper.train(training_data=Z.numpy(), labels=Z_polar.numpy(), N_iterations=20000)
+mapper.train(training_data=Z.numpy(), labels=Z_polar.numpy(), N_iterations=10000)
 
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
