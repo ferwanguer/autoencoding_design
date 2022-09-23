@@ -17,14 +17,14 @@ For this purpose, 3 Neural networks are constructed in the code. Two Variational
 
 ![Capture](https://user-images.githubusercontent.com/57362874/191486351-6c859f63-e314-4c5d-bb66-4e830c0f8f2c.PNG)
 
-Essentially, the VAEs allow us to simplify a 2n dimensional space (Being n the number of points of each airfoil in 2D space) into a 2D space, being the design optimization much more manageable. VAEs are able to ``generate" the corresponding design from a point in the latent space, hence the name ***Generative Design***.
+Essentially, the VAEs allow us to simplify a 2n dimensional space (Being n the number of points of each airfoil in 2D space) into a 2D space, being the design optimization much more manageable. VAEs are able to "generate" the corresponding design from a point in the latent space, hence the name ***Generative Design***.
 The results obtained after training are shown below:
 
 ![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/57362874/191941005-4bbfee82-825f-4c60-a13a-2167663e570b.gif)
 
 There are 2 main advantages that I see in the application of this technique:
 
-* In many optimization problems, it is very difficult to state on clear terms the domain scope of the problem. This is, in the case of an Airfoil design optimization, what constitutes an Airfoil? What are the series of restrictions that one must pose to ensure that the optimization result provides an Airfoil? The answer to this question is very complex and in many cases left unanswered, carrying out the optimization many times by hand. The VAE not only reduces the dimensionality of the search domain, but also (when correctly tuned) ***restricts*** the scope of the search to ``shapes"" that can be characterized as Airfoils.
+* In many optimization problems, it is very difficult to state on clear terms the domain scope of the problem. This is, in the case of an Airfoil design optimization, what constitutes an Airfoil? What are the series of restrictions that one must pose to ensure that the optimization result provides an Airfoil? The answer to this question is very complex and in many cases left unanswered, carrying out the optimization many times by hand. The VAE not only reduces the dimensionality of the search domain, but also (when correctly tuned) ***restricts*** the scope of the search to "shapes" that can be characterized as Airfoils.
 
 * The extrapolation of this design to 3D objects is inmediate (Increasing the network complexity). (This is what was performed in https://arxiv.org/abs/2205.02102)
 
