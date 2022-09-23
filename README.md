@@ -1,7 +1,8 @@
 # Variational autoencoder applied to Generative design
 > This repo contains my work on variational autoencoders applied to generative design. For a thorough documentation on the mathematical principles of the work, it would be adequate to read : https://arxiv.org/abs/2205.02102
 
-![Design_evol_AdobeExpress](https://user-images.githubusercontent.com/57362874/191919403-a8eb1994-0ee3-49e7-9845-553f9ba82755.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/57362874/191920898-3d46f06b-efa5-417c-a067-95afac28df97.gif)
+
 
 
 
