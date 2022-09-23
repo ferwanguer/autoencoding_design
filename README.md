@@ -1,6 +1,11 @@
 # Variational autoencoder applied to Generative design
 > This repo contains my work on variational autoencoders applied to generative design. For a thorough documentation on the mathematical principles of the work, it would be adequate to read : https://arxiv.org/abs/2205.02102
 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/57362874/191920898-3d46f06b-efa5-417c-a067-95afac28df97.gif)
+
+
+
+
 The study case for the application of this technique has been the design extrapolation of 11 NACA Airfoils. This data has been extracted from: http://airfoiltools.com/airfoil/naca4digit. Imported as .txt files in the ***Airfoils*** folder. The same operation was performed by the polars of each of these Airfoils, folder ***Polars***. 
 
 The functioning of this example is as follows: The design of each Airfoil and its lift polar (C_l vs α, being α each Airfoil's angle of attack) is mapped to a 2 Dimensional latent space. We will be able to move through the latent space in real time with two ranges embedded in an HTML file.
@@ -9,9 +14,9 @@ For this purpose, 3 Neural networks are constructed in the code. 2 Variational a
 
 ![Capture](https://user-images.githubusercontent.com/57362874/191486351-6c859f63-e314-4c5d-bb66-4e830c0f8f2c.PNG)
 
-The results obtained after training are showed below:
+The results obtained after training:
 
-![ezgif-5-752830035a](https://user-images.githubusercontent.com/57362874/191562495-ba58ae3b-b780-4d21-8942-2ec2837733e4.gif)
+https://user-images.githubusercontent.com/57362874/191912806-e3a2cf30-6684-42a1-bbb0-6aff70338ecf.mp4
 
 
 
