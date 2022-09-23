@@ -15,7 +15,9 @@ For this purpose, 3 Neural networks are constructed in the code. 2 Variational a
 ![Capture](https://user-images.githubusercontent.com/57362874/191486351-6c859f63-e314-4c5d-bb66-4e830c0f8f2c.PNG)
 
 The results obtained after training:
-![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/57362874/191930162-ec33fbbc-889e-4c6e-91a5-c0334063617f.gif)
+
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/57362874/191933003-16e34ecd-2023-452a-98e9-02c1dbad3b84.gif)
+
 
 
 
