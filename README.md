@@ -38,4 +38,4 @@ For information about the VAE implementation: https://keras.io/examples/generati
 
 For information about Polars, Airfoils and basic aerodynamic concepts: https://en.wikipedia.org/wiki/Drag_curve, http://airfoiltools.com/polar/index
 
-Contact information: f.wguerra@outlook.com
+Contact: f.wguerra@outlook.com
