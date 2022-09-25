@@ -26,7 +26,7 @@ There are 2 main advantages that I see in the application of this technique:
 
 * In many optimization problems, it is very difficult to state on clear terms the domain scope of the design. This is, in the case of an Airfoil design optimization, what constitutes an Airfoil? What are the series of restrictions that one must pose to ensure that the optimization result provides an Airfoil? The answer to this question is very complex and in many cases left unanswered, carrying out the optimization many times by hand. The VAE not only reduces the dimensionality of the search domain, but also (when correctly tuned) ***restricts*** the scope of the search to "shapes" that can be characterized as Airfoils.
 
-* The extrapolation of this design to 3D objects is inmediate (Increasing the network complexity). (This is what was performed in https://arxiv.org/abs/2205.02102)
+* The extrapolation of this design to 3D objects is immediate (Increasing the network complexity). (This is what was performed in https://arxiv.org/abs/2205.02102)
 
 
 
