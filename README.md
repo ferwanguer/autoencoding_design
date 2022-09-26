@@ -28,6 +28,9 @@ There are 2 main advantages that I see in the application of this technique:
 
 * The extrapolation of this design to 3D objects is immediate (Increasing the network complexity). (This is what was performed in https://arxiv.org/abs/2205.02102)
 
+The fact that a VAE is able to contraint the search space to a "valid answers" subspace can be also used for some XAI problems such as Counterfactual generation (https://christophm.github.io/interpretable-ml-book/counterfactual.html): http://rvc.eng.miami.edu/Paper/2018/IJMDEM2018-2.pdf
+
+file:///C:/Users/FernandoWG/Downloads/AIMLAI_p10.pdf
 
 
 Main References:
