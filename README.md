@@ -36,7 +36,7 @@ Main References:
 
 Main concepts of VAEs clearly explained: https://www.youtube.com/watch?v=9zKuYvjFFS8&t=604s&ab_channel=ArxivInsights
 
-For information about the VAE implementation: https://keras.io/examples/generative/vae/
+For information about the VAE implementations: https://keras.io/examples/generative/vae/
 
 For information about Polars, Airfoils and basic aerodynamic concepts: https://en.wikipedia.org/wiki/Drag_curve, http://airfoiltools.com/polar/index
 
