@@ -5,7 +5,7 @@
 
 
 
-The objective of this project has been to live-compute some measure of an Airfoil's performance with respecto to it's design. In this case, the perfomance indicator selected was the lift polar. 
+The objective of this project has been to live-compute some measure of an Airfoil's performance with respect to to it's design. In this case, the perfomance indicator selected was the lift polar. 
 
  
 The study case for the application of this technique has been the design extrapolation of 11 NACA Airfoils. This data has been extracted from: http://airfoiltools.com/airfoil/naca4digit. Imported as .txt files in the ***Airfoils*** folder. The same operation was performed by the polars of each of these Airfoils, folder ***Polars***. 
